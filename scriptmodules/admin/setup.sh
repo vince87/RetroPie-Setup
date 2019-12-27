@@ -76,6 +76,10 @@ function depends_setup() {
         printMsgs "dialog" "Raspbian/Debian Jessie and versions of Ubuntu below 16.04 are no longer supported.\n\nPlease install RetroPie 4.4 or newer from a fresh image which is based on Raspbian Stretch (or if running Ubuntu, upgrade your OS)."
     fi
 
+    if [[ "$(git -C "$scriptdir" rev-parse --abbrev-ref HEAD)" == "fkms_rpi4" ]]; then
+        printMsgs "dialog" "You are running on the development fkms_rpi4 branch which is now merged into master and will be deleted soon - you should switch back to the master branch."
+    fi
+
     # make sure user has the correct group permissions
     if ! isPlatform "x11"; then
         local group
