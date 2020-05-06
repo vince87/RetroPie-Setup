@@ -46,8 +46,8 @@ function gui_jammapi() {
 function gui_jammapi() {
     local cmd=(dialog --backtitle "$__backtitle" --menu "Choose an option." 22 86 16)
     local options=(
-        1 "Enable PowerBlock driver"
-        2 "Disable PowerBlock driver"
+        1 "Enable JammaPi driver"
+        2 "Disable JammaPi driver"
 
     )
     local choice=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
