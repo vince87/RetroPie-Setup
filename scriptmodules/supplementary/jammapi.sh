@@ -39,6 +39,28 @@ function remove_jammapi() {
     bash uninstall.sh
 }
 
-function gui_powerblock() {
+function gui_jammapi() {
     bash ~/JammaPi/script/menu.sh
+}
+
+function gui_jammapi() {
+    local cmd=(dialog --backtitle "$__backtitle" --menu "Choose an option." 22 86 16)
+    local options=(
+        1 "Enable PowerBlock driver"
+        2 "Disable PowerBlock driver"
+
+    )
+    local choice=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+    if [[ -n "$choice" ]]; then
+        case "$choice" in
+            1)
+                install_jammapi
+                printMsgs "dialog" "Enabled JammaPi driver."
+                ;;
+            2)
+                remove_jammapi
+                printMsgs "dialog" "Disabled JammaPi driver."
+                ;;
+        esac
+    fi
 }
